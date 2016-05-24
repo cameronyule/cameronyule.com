@@ -1,0 +1,45 @@
+.wrapper {
+    max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+}
+
+header {
+    padding: $spacing-unit 0;
+    margin-bottom: $spacing-unit;
+    border-bottom: 1px solid $grey-color;
+}
+
+.site-title {
+    display: inline-block;
+    width: 100%;
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+
+    &,
+    &:visited,
+    &:hover, {
+        color: $text-color;
+        text-decoration: none;
+    }
+}
+
+.content {
+    margin-bottom: $spacing-unit;
+}
+
+footer {
+    padding-top: $spacing-unit/2;
+    border-top: 1px solid $grey-color;
+    margin-bottom: $spacing-unit;
+    text-align: right;
+
+    a {
+        text-decoration: none;
+    }
+}

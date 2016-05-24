@@ -1,0 +1,18 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Cameron Yule
+email: cameron@cameronyule.com
+description: > # this means to ignore newlines until "baseurl:"
+  Technical director and programmer based in London.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://cameronyule.com" # the base hostname & protocol for your site
+permalink: /:title
+# Build settings
+markdown: kramdown
+exclude: [.gitignore, LICENSE, README.md, node_modules, gulpfile.js, package.json]

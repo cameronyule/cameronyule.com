@@ -1,0 +1,88 @@
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+    color: $text-color;
+    background-color: $background-color;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+}
+
+strong {
+    font-weight: 400;
+    font-style: normal;
+}
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+    margin-bottom: $spacing-unit / 2;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+figure > img {
+    display: block;
+}
+
+figcaption {
+    font-size: $small-font-size;
+}
+
+ul, ol {
+    margin-left: $spacing-unit;
+}
+
+li {
+    > ul,
+    > ol {
+         margin-bottom: 0;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $base-font-weight;
+}
+
+a {
+    color: $text-color;
+    text-decoration: underline;
+
+    &:visited {
+        
+    }
+
+    &:hover {
+        color: $text-color;
+        text-decoration: none;
+    }
+}
+
+.icon {
+
+    > svg {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+
+        path {
+            fill: $grey-color;
+        }
+    }
+}
