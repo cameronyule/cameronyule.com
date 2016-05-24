@@ -16,3 +16,9 @@ permalink: /:title
 # Build settings
 markdown: kramdown
 exclude: [.gitignore, LICENSE, README.md, node_modules, gulpfile.js, package.json]
+
+gems:
+    - jekyll-minifier
+
+jekyll-minifier:
+  exclude: 'feed.xml'
