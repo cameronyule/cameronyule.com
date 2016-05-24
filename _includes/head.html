@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="ncdrdsXHSm_te2muTKKkhpJ4Qfg8AmD8KPurmxs3sEU" />
 
-  <title>{% if page.title %}{{ page.title | escape }}{% endif %}</title>
+  <title>{% if page.title %}{{ page.title | escape }} – {% endif %}{{ site.title }}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,100' rel='stylesheet' type='text/css'>
