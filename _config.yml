@@ -11,7 +11,7 @@ email: cameron@cameronyule.com
 description: > # this means to ignore newlines until "baseurl:"
   Technical director and programmer based in London.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://cameronyule.com" # the base hostname & protocol for your site
+url: "https://cameronyule.com" # the base hostname & protocol for your site
 permalink: /:title
 # Build settings
 markdown: kramdown
