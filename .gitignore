@@ -1,0 +1,9 @@
+
+# Direnv
+.direnv/
+
+#
+# Node/npm
+
+# Dependency directories
+node_modules/

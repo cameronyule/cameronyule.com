@@ -1,0 +1,4 @@
+baseURL = 'https://cameronyule.com/'
+languageCode = 'en-gb'
+title = "Cameron Yule's blog"
+theme = 'nostyleplease'
