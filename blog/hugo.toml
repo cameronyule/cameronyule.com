@@ -5,3 +5,6 @@ theme = 'nostyleplease'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[params]
+  sectionPagesMenu = "main"

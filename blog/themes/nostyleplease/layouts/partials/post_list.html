@@ -3,7 +3,9 @@
 {{- if .section -}}
     {{- $posts = (where site.RegularPages "Section" .section) -}}
 {{- else -}}
-    {{- if (eq .context.Kind "taxonomy") -}}
+    {{- if (eq .context.Kind "section") -}}
+        {{- $posts = .context.Pages -}}
+    {{- else if (eq .context.Kind "taxonomy") -}}
         {{- $posts = .context.Pages -}}
     {{- else -}}
         {{- if (eq .context.Kind "term") -}}
