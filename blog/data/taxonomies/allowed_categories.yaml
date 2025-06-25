@@ -1,0 +1,9 @@
+# This file defines the list of allowed categories for your content.
+# All categories used in front matter should be present in this list.
+# Use lowercase and hyphens for spaces (kebab-case).
+- blog
+- projects
+- tutorials
+- reviews
+- thoughts
+- life

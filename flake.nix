@@ -36,7 +36,10 @@
 
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
+            # keep-sorted start
             hugo
+            yq
+            # keep-sorted end
           ];
         };
       };
