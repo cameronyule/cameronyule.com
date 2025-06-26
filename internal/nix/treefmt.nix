@@ -22,6 +22,14 @@ _: {
       enable = true;
       priority = 3;
     };
+    ruff-check = {
+      enable = true;
+      priority = 7;
+    };
+    ruff-format = {
+      enable = true;
+      priority = 6;
+    };
     statix = {
       enable = true;
       priority = 1;
