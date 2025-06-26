@@ -3,6 +3,7 @@
 
   <main>
     <h1>{{ .Title }}</h1>
+    <p><a href="{{ .Permalink }}index.xml">RSS Feed for {{ .Title }}</a></p>
     {{ partial "post_list.html" (dict "context" .) }}
   </main>
 {{ end }}
