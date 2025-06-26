@@ -5,10 +5,10 @@
         <main class="page-content" aria-label="Content">
             <div class="w">
                 <header>
-                    <h1><a href="{{ "" | relURL }}">{{ $.Site.Title }}</a></h1>
+                    <h1><a href="{{ site.Home.Permalink }}">{{ $.Site.Title }}</a></h1>
                 </header>
                 {{- block "main" . }}{{- end }}
-                {{ partial "footer.html" }}
+                {{- partial "footer.html" . -}}
             </div>
         </main>
     </body>
