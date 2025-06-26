@@ -4,6 +4,9 @@
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
         <main class="page-content" aria-label="Content">
             <div class="w">
+                <header>
+                    <h1><a href="{{ "" | relURL }}">{{ $.Site.Title }}</a></h1>
+                </header>
                 {{- block "main" . }}{{- end }}
                 {{ partial "footer.html" }}
             </div>

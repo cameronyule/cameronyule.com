@@ -1,17 +1,14 @@
 {{ define "main" }}
 
-<header>
-    <h1>{{ $.Site.Title }}</h1>
-    {{- if $.Site.Params.theme_config.show_description -}}
-        <p>{{ $.Site.Params.description }}</p>
-    {{- end -}}
-    <p>
-        <a href="{{ (site.GetPage "section" "posts").Permalink | relURL }}">Posts</a>,
-        <a href="{{ (site.GetPage "section" "notes").Permalink | relURL }}">Notes</a>,
-        <a href="{{ (site.GetPage "section" "bookmarks").Permalink | relURL }}">Bookmarks</a>,
-        <a href="{{ (site.GetPage "section" "til").Permalink | relURL }}">TILs</a>
-    </p>
-</header>
+{{- if $.Site.Params.theme_config.show_description -}}
+    <p>{{ $.Site.Params.description }}</p>
+{{- end -}}
+<p>
+    <a href="{{ (site.GetPage "section" "posts").Permalink | relURL }}">Posts</a>,
+    <a href="{{ (site.GetPage "section" "notes").Permalink | relURL }}">Notes</a>,
+    <a href="{{ (site.GetPage "section" "bookmarks").Permalink | relURL }}">Bookmarks</a>,
+    <a href="{{ (site.GetPage "section" "til").Permalink | relURL }}">TILs</a>
+</p>
 
 {{ $posts := where .Site.RegularPages "Type" "posts" }}
 {{ $notes := where .Site.RegularPages "Type" "notes" }}
