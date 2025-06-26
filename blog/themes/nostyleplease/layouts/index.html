@@ -6,7 +6,17 @@
         <p>{{ $.Site.Params.description }}</p>
     {{- end -}}
 </header>
-{{ .Content }}
+
+{{ $posts := where .Site.RegularPages "Type" "posts" }}
+{{ $notes := where .Site.RegularPages "Type" "notes" }}
+{{ $combinedContent := union $posts $notes }}
+{{ $sortedContent := sort $combinedContent "Date" "desc" }}
+
+{{ if gt (len $sortedContent) 0 }}
+    <h2>Latest Content</h2>
+    {{ partial "post_list.html" $sortedContent }}
+{{ end }}
+
 {{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
 
 {{ end }}

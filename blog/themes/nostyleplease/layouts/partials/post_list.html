@@ -1,41 +1,60 @@
-{{- $posts := "" -}}
+{{- $pagesToRender := "" -}}
+{{- $limit := "" -}}
+{{- $show_more := "" -}}
+{{- $show_more_text := "" -}}
+{{- $show_more_url := "" -}}
 
-{{- if .section -}}
-    {{- $posts = (where site.RegularPages "Section" .section) -}}
-{{- else -}}
-    {{- if (eq .context.Kind "section") -}}
-        {{- $posts = .context.Pages -}}
-    {{- else if (eq .context.Kind "taxonomy") -}}
-        {{- $posts = .context.Pages -}}
+{{- /* Determine the source of pages based on the input type */ -}}
+{{- if reflect.IsSlice . -}}
+    {{- /* If the input is already a slice/collection of pages (e.g., from index.html) */ -}}
+    {{- $pagesToRender = . -}}
+{{- else if reflect.IsMap . -}}
+    {{- /* If the input is a dictionary (e.g., from menu_item.html) */ -}}
+    {{- $limit = .limit -}}
+    {{- $show_more = .show_more -}}
+    {{- $show_more_text = .show_more_text -}}
+    {{- $show_more_url = .show_more_url -}}
+
+    {{- if .section -}}
+        {{- $pagesToRender = (where site.RegularPages "Section" .section) -}}
+    {{- else if .context -}}
+        {{- /* Handle cases where context is passed, e.g., section, taxonomy, term pages */ -}}
+        {{- if (eq .context.Kind "section") -}}
+            {{- $pagesToRender = .context.Pages -}}
+        {{- else if (eq .context.Kind "taxonomy") -}}
+            {{- $pagesToRender = .context.Pages -}}
+        {{- else if (eq .context.Kind "term") -}}
+            {{- $pagesToRender = .context.Data.Pages -}}
+        {{- else -}}
+            {{- $pagesToRender = site.RegularPages -}}
+        {{- end -}}
     {{- else -}}
-        {{- if (eq .context.Kind "term") -}}
-            {{- $posts = .context.Data.Pages -}}
-	{{- else -}}
-            {{- $posts = site.RegularPages }}
-	{{- end -}}
+        {{- /* Fallback if no specific section or context is provided in the dict */ -}}
+        {{- $pagesToRender = site.RegularPages -}}
     {{- end -}}
+{{- else -}}
+    {{- /* Default fallback if input is neither a slice nor a map (e.g., if . is a page itself) */ -}}
+    {{- $pagesToRender = site.RegularPages -}}
 {{- end -}}
 
-{{- $limit_exceeded:= "" -}}
-{{- if (and .limit (gt (len $posts) .limit)) -}}
+{{- $limit_exceeded:= false -}}
+{{- if (and $limit (gt (len $pagesToRender) $limit)) -}}
     {{- $limit_exceeded = true -}}
-{{- else -}}
-    {{- $limit_exceeded = false -}}
-{{ end }}
+{{- end -}}
 
-{{- if (gt (len $posts) 0) }}
-    {{- if .limit }}
-        {{ $posts = (first .limit $posts ) }}
+{{- if (gt (len $pagesToRender) 0) }}
+    {{- if $limit }}
+        {{ $pagesToRender = (first $limit $pagesToRender ) }}
     {{ end }}
     <ul>
-        {{- range $post := $posts -}}
+        {{- range $post := $pagesToRender -}}
         <li>
             <span>{{- ($post.Date | time.Format site.Params.theme_config.date_format) }}</span>
             <a href="{{ $post.Permalink | relURL }}">{{ $post.Title }}</a>
         </li>
         {{ end }}
-        {{- if and .show_more $limit_exceeded }}
-            <li><a href="{{ .show_more_url | relURL }}">{{ .show_more_text | default "Show more..." }}</a></li>
+        {{- if and $show_more $limit_exceeded }}
+            <li><a href="{{ $show_more_url | relURL }}">{{ $show_more_text | default "Show more..." }}</a></li>
         {{ end }}
     </ul>
 {{ end }}
