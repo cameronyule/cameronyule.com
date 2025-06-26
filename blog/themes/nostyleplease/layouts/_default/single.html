@@ -2,13 +2,15 @@
 {{ partial "back_link.html" .}}
 
 <article>
-    <p class="post-meta">
-        <time datetime="{{ .Date }}">
-            {{ .Date | time.Format site.Params.theme_config.date_format }}
-        </time>
-    </p>
-
-    <h1>{{ .Title }}</h1>
+    <header>
+        <h1>{{ .Title }}</h1>
+        {{ if .Date }}
+            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format (default "January 2, 2006" site.Params.theme_config.date_format) }}</time>
+        {{ end }}
+        {{ with .Params.link }}
+            <p>Link: <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ . }}</a></p>
+        {{ end }}
+    </header>
 
     {{ if .Params.toc }}
         <aside {{ if .Params.tocBorder }} class="toc" {{ end }}>

@@ -1,5 +1,12 @@
 {{ define "main" }}
-{{ partial "back_link.html" .}}
+<div class="post-meta">
+    {{ partial "back_link.html" .}}
+    <p>
+        <time datetime="{{ .Date }}">
+            {{ .Date | time.Format site.Params.theme_config.date_format }}
+        </time>
+    </p>
+</div>
 
 <article>
     <h1>{{ .Title }}</h1>
