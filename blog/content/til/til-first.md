@@ -1,7 +1,7 @@
 ---
 title: "A TIL"
 date: 2025-06-25T22:19:29+01:00
-draft: false
+draft: true
 tags: ["til"]
 categories: []
 ---

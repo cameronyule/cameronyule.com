@@ -1,7 +1,7 @@
 ---
 title: "A Note"
 date: 2025-06-25T22:24:39+01:00
-draft: false
+draft: true
 tags: ["notes"]
 categories: []
 ---

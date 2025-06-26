@@ -1,7 +1,7 @@
 ---
 date: '2025-06-25T16:14:44+01:00'
 title: 'A Post'
-draft: false
+draft: true
 tags: []
 categories: ["thoughts"]
 ---
