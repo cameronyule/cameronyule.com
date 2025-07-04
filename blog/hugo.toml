@@ -10,6 +10,7 @@ theme = 'nostyleplease'
   sectionPagesMenu = "main"
 
 [permalinks]
-  bookmarks = "/bookmarks/:year/:month/:day/:slug/"
-  notes = "/notes/:year/:month/:day/:slug/"
-  til = "/til/:year/:month/:day/:slug/"
+  posts = "/:year/:month/:day/:slug/"
+  bookmarks = "/:year/:month/:day/:slug/"
+  notes = "/:year/:month/:day/:slug/"
+  til = "/:year/:month/:day/:slug/"
