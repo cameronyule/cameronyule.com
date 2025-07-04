@@ -14,15 +14,17 @@
     {{ .Content }}
     {{ if .Params.tags }}
     <p>Tags:
-        {{ range .Params.tags }}
-            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ if ne . $.Params.tags.Last }}, {{ end }}
+        {{ $tags := .Params.tags }}
+        {{ range $index, $tag := $tags }}
+            <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>{{ if lt (add $index 1) (len $tags) }}, {{ end }}
         {{ end }}
     </p>
     {{ end }}
     {{ if .Params.categories }}
     <p>Categories:
-        {{ range .Params.categories }}
-            <a href="{{ "/categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ if ne . $.Params.categories.Last }}, {{ end }}
+        {{ $categories := .Params.categories }}
+        {{ range $index, $category := $categories }}
+            <a href="{{ "/categories/" | relURL }}{{ $category | urlize }}">{{ $category }}</a>{{ if lt (add $index 1) (len $categories) }}, {{ end }}
         {{ end }}
     </p>
     {{ end }}
