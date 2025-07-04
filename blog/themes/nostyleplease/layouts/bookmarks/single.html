@@ -1,18 +1,30 @@
 {{ define "main" }}
-
 <article>
-    <h1>{{ .Title }}</h1>
-
-    {{ if .Params.toc }}
-        <aside {{ if .Params.tocBorder }} class="toc" {{ end }}>
-            {{ .TableOfContents }}
-        </aside>
-    {{ end }}
-
-    {{ with .Params.link }}
-      <p>Link: <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ . }}</a></p>
-    {{ end }}
-
+    <header>
+        <h1>
+            {{ .Title }}
+            {{ with .Params.url }}
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" title="Visit original link">🔗</a>
+            {{ end }}
+        </h1>
+        {{ if not .Date.IsZero }}
+        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        {{ end }}
+    </header>
     {{ .Content }}
+    {{ if .Params.tags }}
+    <p>Tags:
+        {{ range .Params.tags }}
+            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ if ne . $.Params.tags.Last }}, {{ end }}
+        {{ end }}
+    </p>
+    {{ end }}
+    {{ if .Params.categories }}
+    <p>Categories:
+        {{ range .Params.categories }}
+            <a href="{{ "/categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ if ne . $.Params.categories.Last }}, {{ end }}
+        {{ end }}
+    </p>
+    {{ end }}
 </article>
 {{ end }}
