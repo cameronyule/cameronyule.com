@@ -10,6 +10,7 @@
                     <p>{{ $.Site.Params.description }}</p>
                     {{- end -}}
                 </header>
+                {{- if not .Date.IsZero -}}
                 <div class="post-meta">
                     <p>
                         <time datetime="{{ .Date }}">
@@ -17,6 +18,7 @@
                         </time>
                     </p>
                 </div>
+                {{- end -}}
                 {{- block "main" . }}{{- end }}
                 {{- partial "tags_categories.html" . -}}
             </div>
