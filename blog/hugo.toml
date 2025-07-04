@@ -8,3 +8,8 @@ theme = 'nostyleplease'
 
 [params]
   sectionPagesMenu = "main"
+
+[permalinks]
+  bookmarks = "/bookmarks/:year/:month/:day/:slug/"
+  notes = "/notes/:year/:month/:day/:slug/"
+  til = "/til/:year/:month/:day/:slug/"
