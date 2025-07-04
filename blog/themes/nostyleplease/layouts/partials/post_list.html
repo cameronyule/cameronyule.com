@@ -1,6 +1,8 @@
 {{- $posts := "" -}}
 
-{{- if .section -}}
+{{- if .pages -}}
+    {{- $posts = .pages -}}
+{{- else if .section -}}
     {{- $posts = (where site.RegularPages "Section" .section) -}}
 {{- else -}}
     {{- if (eq .context.Kind "taxonomy") -}}
@@ -22,7 +24,7 @@
 {{ end }}
 
 {{- if (gt (len $posts) 0) }}
-    {{- if .limit }}
+    {{- if (and .limit (not .pages)) }} {{/* Only apply limit if pages are not pre-filtered */}}
         {{ $posts = (first .limit $posts ) }}
     {{ end }}
     <ul>

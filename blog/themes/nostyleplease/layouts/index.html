@@ -1,6 +1,7 @@
 {{ define "main" }}
+  {{ $pages := where .Site.RegularPages "Type" "in" (slice "posts" "til" "bookmarks") }}
+  {{ $sortedPages := $pages.ByDate.Reverse }}
+  {{ $limitedPages := first 10 $sortedPages }}
 
-
-{{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
-
+  {{ partial "post_list.html" (dict "pages" $limitedPages "context" .) }}
 {{ end }}
