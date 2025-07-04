@@ -93,7 +93,7 @@ title: |
 date: {hugo_date}
 draft: false
 tags: {tags_yaml}
-link: |
+link: |-
   {href}
 categories: []
 ---
