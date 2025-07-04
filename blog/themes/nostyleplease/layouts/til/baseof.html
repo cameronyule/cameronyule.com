@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode }}">
+    {{- partial "head.html" . -}}
+    <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+                <header>
+                    <h1><a href="{{ "" | relURL }}">{{ $.Site.Title }}</a></h1>
+                    {{- if $.Site.Params.theme_config.show_description -}}
+                    <p>{{ $.Site.Params.description }}</p>
+                    {{- end -}}
+                </header>
+                <div class="post-meta">
+                    <p>
+                        <time datetime="{{ .Date }}">
+                            {{ .Date | time.Format site.Params.theme_config.date_format }}
+                        </time>
+                    </p>
+                </div>
+                {{- block "main" . }}{{- end }}
+                {{- partial "tags_categories.html" . -}}
+            </div>
+        </main>
+    </body>
+    {{- if .Params.custom_js -}}
+        {{- range .Params.custom_js -}}
+            {{ $js := resources.Get (print "js/" . ".js") }}
+            <script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
+        {{- end -}}
+    {{- end -}}
+</html>
