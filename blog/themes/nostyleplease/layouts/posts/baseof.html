@@ -4,6 +4,12 @@
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
         <main class="page-content" aria-label="Content">
             <div class="w">
+                <header>
+                    <h1><a href="{{ "" | relURL }}">{{ $.Site.Title }}</a></h1>
+                    {{- if $.Site.Params.theme_config.show_description -}}
+                    <p>{{ $.Site.Params.description }}</p>
+                    {{- end -}}
+                </header>
                 <div class="post-meta">
                     {{ partial "back_link.html" .}}
                     <p>
