@@ -1,0 +1,16 @@
+{{ if .Params.tags }}
+<p>Tags:
+  {{ $tags := .Params.tags }}
+  {{ range $index, $tag := $tags }}
+  <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>{{ if lt (add $index 1) (len $tags) }}, {{ end }}
+  {{ end }}
+</p>
+{{ end }}
+{{ if .Params.categories }}
+<p>Categories:
+  {{ $categories := .Params.categories }}
+  {{ range $index, $category := $categories }}
+  <a href="{{ "/categories/" | relURL }}{{ $category | urlize }}">{{ $category }}</a>{{ if lt (add $index 1) (len $categories) }}, {{ end }}
+  {{ end }}
+</p>
+{{ end }}

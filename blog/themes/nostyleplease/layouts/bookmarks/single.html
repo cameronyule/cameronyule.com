@@ -1,32 +1,11 @@
 {{ define "main" }}
+
 <article>
-    <header>
-        <h1>
-            {{ .Title }}
-            {{ with .Params.url }}
-                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" title="Visit original link">🔗</a>
-            {{ end }}
-        </h1>
-        {{ if not .Date.IsZero }}
-        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
-        {{ end }}
-    </header>
+    <h2>{{ .Title }}</h2>
+
+    <a href="{{ .Params.link }}" target="_blank" rel="noopener noreferrer" title="Visit original link">{{ .Title }}</a>
+
     {{ .Content }}
-    {{ if .Params.tags }}
-    <p>Tags:
-        {{ $tags := .Params.tags }}
-        {{ range $index, $tag := $tags }}
-            <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>{{ if lt (add $index 1) (len $tags) }}, {{ end }}
-        {{ end }}
-    </p>
-    {{ end }}
-    {{ if .Params.categories }}
-    <p>Categories:
-        {{ $categories := .Params.categories }}
-        {{ range $index, $category := $categories }}
-            <a href="{{ "/categories/" | relURL }}{{ $category | urlize }}">{{ $category }}</a>{{ if lt (add $index 1) (len $categories) }}, {{ end }}
-        {{ end }}
-    </p>
-    {{ end }}
+
 </article>
 {{ end }}
