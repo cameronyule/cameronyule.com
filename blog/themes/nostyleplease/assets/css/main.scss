@@ -1,92 +1,62 @@
-// Define color variables
-// Dark Mode (Modus Vivendi inspired)
-$dark-bg-color: #000000;
-$dark-primary-text-color: #ffffff;
-$dark-secondary-text-color: #a0a0a0; // Changed from #000000 to a visible gray
-$dark-link-color: #79a8ff;
-$dark-visited-link-color: #f78fe7;
-$dark-highlight-color: #2f3849;
-
-// Light Mode (Modus Operandi inspired)
-$light-bg-color: #ffffff;
-$light-primary-text-color: #000000;
-$light-secondary-text-color: #595959;
-$light-link-color: #3548cf;
-$light-visited-link-color: #8f0075;
-$light-highlight-color: #dae5ec;
-
 // -------------- THEME SWITCHER -------------- //
-@mixin theme($bg-color, $primary-text-color, $secondary-text-color, $link-color, $visited-link-color, $highlight) {
-  background-color: $bg-color;
-  color: $primary-text-color;
+@mixin theme($--bg-color, $--primary-text-color, $--secondary-text-color, $--link-color, $--visited-link-color, $--highlight) {
+  background-color: $--bg-color;
+
+  color: $--primary-text-color;
 
   a {
-    color: $link-color;
-    &:visited { color: $visited-link-color; }
+    color: $--link-color;
+    &:visited { color: $--visited-link-color; }
   }
 
   details {
-    border: thin solid $primary-text-color;
+    border: thin solid $--primary-text-color;
   }
 
   details summary {
-    color: $primary-text-color;
+    color: $--primary-text-color;
   }
 
   details[open] summary {
-    border-bottom: 1px solid $primary-text-color;
+    border-bottom: 1px solid $--primary-text-color;
   }
 
   pre {
-    background: $bg-color;
+    background: $--bg-color;
   }
 
   code:not(pre > code) {
-    background-color: $primary-text-color;
-    color: $bg-color;
+    background-color: $--primary-text-color;
+    color: $--bg-color;
   }
 
   *:target {
-    background: $highlight;
-    color: $primary-text-color;
-  }
+    background: $--highlight;
+    color: $--primary-text-color;
+   }
 
   table, th, td {
-    border: thin solid $primary-text-color;
+    border: thin solid $--primary-text-color;
   }
 
   .toc {
-    border: thin solid $primary-text-color;
+    border: thin solid $--primary-text-color;
     padding: 1rem;
   }
 
-  figcaption { color: $secondary-text-color; }
+  figcaption { color: $--secondary-text-color; }
 
   blockquote {
-    border: thin solid $primary-text-color;
+    border: thin solid $--primary-text-color;
   }
 }
 
 @mixin dark-appearance {
-  @include theme(
-    $dark-bg-color,
-    $dark-primary-text-color,
-    $dark-secondary-text-color,
-    $dark-link-color,
-    $dark-visited-link-color,
-    $dark-highlight-color
-  );
+  @include theme(#000000, #ffffff, #000000, #79a8ff, #f78fe7, #2f3849); // modus-vivendi
 }
 
 @mixin light-appearance {
-  @include theme(
-    $light-bg-color,
-    $light-primary-text-color,
-    $light-secondary-text-color,
-    $light-link-color,
-    $light-visited-link-color,
-    $light-highlight-color
-  );
+  @include theme(#ffffff, #000000, #595959, #3548cf, #8f0075, #dae5ec); // modus-operandi
 }
 
 body[a="dark"] { @include dark-appearance; }

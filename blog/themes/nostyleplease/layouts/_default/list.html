@@ -5,7 +5,4 @@
 
 {{ .Content }}
 {{ partial "post_list.html" (dict "context" . "section" .Section)}}
-
-<p><a href="{{ .Permalink }}index.xml">RSS Feed for {{ .Title }}</a></p>
-
 {{ end }}

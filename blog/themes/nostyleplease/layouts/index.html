@@ -1,22 +1,12 @@
 {{ define "main" }}
 
-{{- if $.Site.Params.theme_config.show_description -}}
-    <p>{{ $.Site.Params.description }}</p>
-{{- end -}}
-<p>
-    <a href="{{ (site.GetPage "section" "posts").Permalink | relURL }}">Posts</a>,
-    <a href="{{ (site.GetPage "section" "notes").Permalink | relURL }}">Notes</a>,
-    <a href="{{ (site.GetPage "section" "bookmarks").Permalink | relURL }}">Bookmarks</a>,
-    <a href="{{ (site.GetPage "section" "til").Permalink | relURL }}">TILs</a>
-</p>
-
-{{ $posts := where .Site.RegularPages "Type" "posts" }}
-{{ $notes := where .Site.RegularPages "Type" "notes" }}
-{{ $combinedContent := union $posts $notes }}
-{{ $sortedContent := sort $combinedContent "Date" "desc" }}
-
-{{ if gt (len $sortedContent) 0 }}
-    {{ partial "post_list.html" $sortedContent }}
-{{ end }}
+<header>
+    <h1>{{ $.Site.Title }}</h1>
+    {{- if $.Site.Params.theme_config.show_description -}}
+        <p>{{ $.Site.Params.description }}</p>
+    {{- end -}}
+</header>
+{{ .Content }}
+{{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
 
 {{ end }}
