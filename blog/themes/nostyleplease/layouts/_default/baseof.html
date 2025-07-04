@@ -9,6 +9,17 @@
                     {{- if $.Site.Params.theme_config.show_description -}}
                     <p>{{ $.Site.Params.description }}</p>
                     {{- end -}}
+                    <p>
+                            {{ with site.GetPage "section" "posts" }}
+                            <a href="{{ .RelPermalink }}">{{ .Title | default "Posts" }}</a>,
+                            {{ end }}
+                            {{ with site.GetPage "section" "bookmarks" }}
+                            <a href="{{ .RelPermalink }}">{{ .Title | default "Bookmarks" }}</a>,
+                            {{ end }}
+                            {{ with site.GetPage "section" "til" }}
+                            <a href="{{ .RelPermalink }}">{{ .Title | default "TIL" }}</a>
+                            {{ end }}
+                    </p>
                 </header>
 
                 {{- block "main" . }}{{- end }}
