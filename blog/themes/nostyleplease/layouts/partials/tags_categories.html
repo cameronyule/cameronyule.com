@@ -1,8 +1,14 @@
 {{ if .Params.tags }}
 <p>Tags:
-  {{ $tags := .Params.tags }}
-  {{ range $index, $tag := $tags }}
-  <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>{{ if lt (add $index 1) (len $tags) }}, {{ end }}
+  {{ $allTags := .Params.tags }}
+  {{ $displayTags := slice }}
+  {{ range $allTags }}
+    {{ if ne . "cy-bookmark" }}
+      {{ $displayTags = $displayTags | append . }}
+    {{ end }}
+  {{ end }}
+  {{ range $index, $tag := $displayTags }}
+  <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>{{ if lt (add $index 1) (len $displayTags) }}, {{ end }}
   {{ end }}
 </p>
 {{ end }}
