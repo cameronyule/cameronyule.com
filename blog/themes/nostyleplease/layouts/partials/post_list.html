@@ -10,8 +10,6 @@
     {{- else -}}
         {{- if (eq .context.Kind "term") -}}
             {{- $posts = .context.Data.Pages -}}
-	{{- else -}}
-            {{- $posts = site.RegularPages }}
 	{{- end -}}
     {{- end -}}
 {{- end -}}
