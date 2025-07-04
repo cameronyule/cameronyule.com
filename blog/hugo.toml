@@ -1,6 +1,6 @@
 baseURL = 'https://cameronyule.com/'
 languageCode = 'en-gb'
-title = "Cameron Yule's blog"
+title = "Cameron Yule"
 theme = 'nostyleplease'
 [caches]
   [caches.images]
