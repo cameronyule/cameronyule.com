@@ -12,5 +12,4 @@ theme = 'nostyleplease'
 [permalinks]
   posts = "/:year/:month/:day/:slug/"
   bookmarks = "/:year/:month/:day/:slug/"
-  notes = "/:year/:month/:day/:slug/"
   til = "/:year/:month/:day/:slug/"
