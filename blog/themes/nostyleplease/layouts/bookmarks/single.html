@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+<article>
+    <h1>{{ .Title }}</h1>
+
+    {{ if .Params.toc }}
+        <aside {{ if .Params.tocBorder }} class="toc" {{ end }}>
+            {{ .TableOfContents }}
+        </aside>
+    {{ end }}
+
+    {{ with .Params.link }}
+      <p>Link: <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ . }}</a></p>
+    {{ end }}
+
+    {{ .Content }}
+</article>
+{{ end }}
