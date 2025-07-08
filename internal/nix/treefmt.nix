@@ -25,6 +25,7 @@ _: {
     pinact = {
       enable = true;
       priority = 5;
+      update = false;
     };
     ruff-check = {
       enable = true;
