@@ -5,7 +5,7 @@ _: {
     # keep-sorted start block=yes
     actionlint = {
       enable = true;
-      priority = 5;
+      priority = 6;
     };
     alejandra = {
       enable = true;
@@ -22,13 +22,17 @@ _: {
       enable = true;
       priority = 3;
     };
+    pinact = {
+      enable = true;
+      priority = 5;
+    };
     ruff-check = {
       enable = true;
-      priority = 7;
+      priority = 8;
     };
     ruff-format = {
       enable = true;
-      priority = 6;
+      priority = 7;
     };
     statix = {
       enable = true;
